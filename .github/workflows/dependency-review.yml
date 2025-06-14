@@ -1,0 +1,11 @@
+name: dependency-review
+
+on:
+  - pull_request_target
+
+jobs:
+  shared:
+    uses: ./.github/workflows/shared-dependency-review.yml
+    permissions:
+      contents: read
+      pull-requests: write

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","mappings":";;;AAAA;AACA;;;;ACDA;AACA;AACA","sources":["../webpack/runtime/compat",".././src/main.ts"],"sourcesContent":["\nif (typeof __webpack_require__ !== 'undefined') __webpack_require__.ab = __dirname + \"/\";","\"use strict\";\nasync function main() { }\nmain().catch(error => console.error(error));\n"],"names":[],"sourceRoot":""}

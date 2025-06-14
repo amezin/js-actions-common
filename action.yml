@@ -1,0 +1,6 @@
+name: Template action
+description: Template action
+
+runs:
+  using: node20
+  main: dist/index.js
