@@ -21,9 +21,6 @@ jobs:
           node-version-file: .nvmrc
           registry-url: https://npm.pkg.github.com
 
-      - run: npm ci
-        working-directory: packages/eslint-config
-
       - run: npm --no-git-tag-version version from-git
         working-directory: packages/eslint-config
 
