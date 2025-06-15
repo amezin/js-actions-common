@@ -4,7 +4,7 @@
 
 ### Workflows
 
-Those without `shared-` prefix in the name:
+Those without `shared-` prefix in the name, except `publish-eslint-config.yml`:
 
 - `.github/workflows/ci.yml`
 - `.github/workflows/dependency-review.yml`

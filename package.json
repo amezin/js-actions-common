@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/node": "20.17.57",
     "@vercel/ncc": "0.38.3",
-    "eslint-config-js-actions-common": "file:packages/eslint-config",
+    "@amezin/eslint-config-js-actions": "file:packages/eslint-config",
     "typescript": "5.8.3"
   }
 }

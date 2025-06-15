@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-js-actions-common",
+  "name": "@amezin/eslint-config-js-actions",
   "private": true,
   "description": "Shared ESLint config for JavaScript/TypeScript GitHub Actions",
   "homepage": "https://github.com/amezin/js-actions-common",
