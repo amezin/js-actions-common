@@ -14,3 +14,4 @@ jobs:
         with:
           comment-summary-in-pr: always
           allow-licenses: MIT, Apache-2.0, ISC, BSD-2-Clause, BSD-3-Clause
+          allow-dependencies-licenses: pkg:actions/amezin/js-actions-common/.github/workflows/shared-ci.yml, pkg:actions/amezin/js-actions-common/.github/workflows/shared-codeql.yml, pkg:actions/amezin/js-actions-common/.github/workflows/shared-dependency-review.yml, pkg:actions/amezin/js-actions-common/.github/workflows/shared-tags.yml
