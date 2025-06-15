@@ -12,7 +12,10 @@ permissions:
 jobs:
   npm-publish:
     runs-on: ubuntu-latest
-    environment: npm
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/@amezin/eslint-config-js-actions
+
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
