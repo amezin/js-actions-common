@@ -16,8 +16,10 @@
     "format": "prettier --write .",
     "lint": "eslint"
   },
+  "dependencies": {
+    "@actions/core": "1.11.1"
+  },
   "devDependencies": {
-    "@actions/core": "^1.11.1",
     "@types/node": "20.17.57",
     "@vercel/ncc": "0.38.3",
     "eslint-config-js-actions-common": "file:packages/eslint-config",
