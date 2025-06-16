@@ -29,5 +29,6 @@
       "minimumReleaseAge": "0"
     }
   ],
-  "minimumReleaseAge": "14 days"
+  "minimumReleaseAge": "14 days",
+  "postUpdateOptions": ["npmDedupe"]
 }
