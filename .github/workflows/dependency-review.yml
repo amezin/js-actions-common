@@ -6,6 +6,8 @@ on:
 jobs:
   shared:
     uses: ./.github/workflows/shared-dependency-review.yml
+    with:
+      allow-dependencies-licenses: pkg:npm/argparse
     permissions:
       contents: read
       pull-requests: write
