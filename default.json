@@ -1,7 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Common Renovate configuration for JavaScript/TypeScript GitHub Actions",
-  "extends": ["config:best-practices", "config:js-app", ":rebaseStalePrs"],
+  "extends": [
+    "config:best-practices",
+    "config:js-app",
+    "npm:unpublishSafe",
+    ":rebaseStalePrs"
+  ],
   "packageRules": [
     {
       "extends": ["helpers:pinGitHubActionDigests"],
@@ -29,6 +34,5 @@
       "minimumReleaseAge": "0"
     }
   ],
-  "minimumReleaseAge": "14 days",
   "postUpdateOptions": ["npmDedupe"]
 }
