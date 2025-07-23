@@ -25,6 +25,7 @@
     {
       "matchPackageNames": ["amezin/js-actions-common"],
       "matchDatasources": ["github-tags"],
+      "versioning": "npm",
       "groupName": "js-actions-common",
       "minimumReleaseAge": "0"
     },
