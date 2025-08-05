@@ -3,5 +3,12 @@
   "extends": [
     "github>amezin/js-actions-common",
     "customManagers:githubActionsVersions"
+  ],
+  "packageRules": [
+    {
+      "extends": ["packages:eslint"],
+      "matchDatasources": "npm",
+      "automerge": true
+    }
   ]
 }
