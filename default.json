@@ -29,14 +29,17 @@
       "matchDatasources": ["github-tags"],
       "versioning": "npm",
       "groupName": "js-actions-common",
-      "minimumReleaseAge": "0"
+      "minimumReleaseAge": "0",
+      "automerge": true
     },
     {
       "matchPackageNames": ["@amezin/eslint-config-js-actions"],
       "matchDatasources": ["npm"],
       "groupName": "js-actions-common",
-      "minimumReleaseAge": "0"
+      "minimumReleaseAge": "0",
+      "automerge": true
     }
   ],
-  "postUpdateOptions": ["npmDedupe"]
+  "postUpdateOptions": ["npmDedupe"],
+  "platformAutomerge": false
 }
