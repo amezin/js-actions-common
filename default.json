@@ -14,11 +14,7 @@
       "versioning": "npm"
     },
     {
-      "matchPackageNames": [
-        "node",
-        "@types/node",
-        "@octokit/plugin-request-log"
-      ],
+      "matchPackageNames": ["node", "@types/node", "@octokit/*"],
       "matchUpdateTypes": ["major"],
       "enabled": false
     },
