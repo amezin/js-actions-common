@@ -14,7 +14,13 @@
       "versioning": "npm"
     },
     {
-      "matchPackageNames": ["node", "@types/node", "@octokit/*"],
+      "matchDatasources": ["node-version"],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["@types/node", "@octokit/*"],
+      "matchDatasources": ["npm"],
       "matchUpdateTypes": ["major"],
       "enabled": false
     },
