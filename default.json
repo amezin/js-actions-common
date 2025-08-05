@@ -38,6 +38,12 @@
       "groupName": "js-actions-common",
       "minimumReleaseAge": "0",
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["amezin/*"],
+      "matchDatasources": ["github-tags"],
+      "minimumReleaseAge": "0",
+      "automerge": true
     }
   ],
   "postUpdateOptions": ["npmDedupe"],
