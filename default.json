@@ -41,7 +41,7 @@
     },
     {
       "matchPackageNames": ["amezin/*"],
-      "matchDatasources": ["github-tags"],
+      "matchManagers": ["github-actions"],
       "minimumReleaseAge": "0",
       "automerge": true
     }
