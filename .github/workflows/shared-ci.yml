@@ -71,7 +71,7 @@ jobs:
           mkdir actionlint
           tar -C actionlint -xf "actionlint_${ACTIONLINT_VERSION}_linux_amd64.tar.gz"
           echo "$(pwd)/actionlint" >>"$GITHUB_PATH"
-          wget "https://raw.githubusercontent.com/rhysd/actionlint/refs/tags/v${ACTIONLINT_VERSION}/.github/actionlint-matcher.json"
+          wget "https://raw.githubusercontent.com/rhysd/actionlint/v${ACTIONLINT_VERSION}/.github/actionlint-matcher.json"
           echo "::add-matcher::$(pwd)/actionlint-matcher.json"
 
       - run: actionlint -verbose -color
