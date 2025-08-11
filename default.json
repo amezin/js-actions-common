@@ -33,7 +33,10 @@
       "automerge": true
     },
     {
-      "matchPackageNames": ["@amezin/eslint-config-js-actions"],
+      "matchPackageNames": [
+        "@amezin/eslint-config-js-actions",
+        "@amezin/js-actions-octokit"
+      ],
       "matchDatasources": ["npm"],
       "groupName": "js-actions-common",
       "minimumReleaseAge": "0",
