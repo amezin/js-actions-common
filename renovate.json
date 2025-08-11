@@ -9,6 +9,14 @@
       "extends": ["packages:eslint"],
       "matchDatasources": "npm",
       "automerge": true
+    },
+    {
+      "matchFileNames": ["packages/octokit/**"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "matchFileNames": ["packages/octokit/**"],
+      "extends": [":pinDevDependencies", ":widenPeerDependencies"]
     }
   ]
 }
