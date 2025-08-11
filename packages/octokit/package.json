@@ -14,8 +14,11 @@
   "dependencies": {
     "@actions/core": "1.11.1",
     "@actions/github": "6.0.1",
+    "@octokit/core": "5.2.2",
     "@octokit/plugin-retry": "6.1.0",
-    "@octokit/plugin-throttling": "8.2.0"
+    "@octokit/plugin-throttling": "8.2.0",
+    "@octokit/request-error": "5.1.1",
+    "@octokit/types": "13.10.0"
   },
   "devDependencies": {
     "@amezin/eslint-config-js-actions": "",
