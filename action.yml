@@ -4,3 +4,9 @@ description: Template action
 runs:
   using: node20
   main: dist/index.js
+
+inputs:
+  github-token:
+    description: GitHub API token to use
+    default: ${{ github.token }}
+    required: true

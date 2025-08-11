@@ -1,0 +1,36 @@
+{
+  "name": "@amezin/js-actions-octokit",
+  "description": "Octokit with throttling and logging for GitHub Actions",
+  "homepage": "https://github.com/amezin/js-actions-common",
+  "bugs": {
+    "url": "https://github.com/amezin/js-actions-common/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amezin/js-actions-common.git",
+    "directory": "packages/octokit"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "1.11.1",
+    "@actions/github": "6.0.1",
+    "@octokit/plugin-retry": "6.1.0",
+    "@octokit/plugin-throttling": "8.2.0"
+  },
+  "devDependencies": {
+    "@amezin/eslint-config-js-actions": "",
+    "@types/node": "20.19.9",
+    "typescript": "5.9.2"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc",
+    "format": "prettier --write .",
+    "lint": "eslint"
+  },
+  "main": "lib/main.js",
+  "types": "lib/main.d.ts",
+  "files": [
+    "lib"
+  ]
+}

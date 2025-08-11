@@ -31,6 +31,7 @@
     ".": "./index.js"
   },
   "scripts": {
+    "build": "",
     "format": "prettier --write .",
     "lint": "eslint"
   }
