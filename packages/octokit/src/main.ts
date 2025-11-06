@@ -13,6 +13,10 @@ import { throttling, type ThrottlingOptions } from '@octokit/plugin-throttling';
 
 type GitHub = ReturnType<typeof github.getOctokit>;
 
+const defaultHeaders = {
+    'X-GitHub-Api-Version': '2022-11-28',
+};
+
 const log: OctokitOptions['log'] = {
     debug: (...args) => core.debug(util.format(...args)),
     info: (...args) => core.info(util.format(...args)),
@@ -114,6 +118,12 @@ const throttle: ThrottlingOptions = {
     ),
 };
 
+function withDefaultHeaders(octokit: Octokit) {
+    const request = octokit.request.defaults({ headers: defaultHeaders });
+
+    return { request };
+}
+
 export function getOctokit(
     token: string,
     options?: OctokitOptions,
@@ -126,6 +136,7 @@ export function getOctokit(
             throttle,
             ...options,
         },
+        withDefaultHeaders,
         requestLog,
         retry,
         throttling,

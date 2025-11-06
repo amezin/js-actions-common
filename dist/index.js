@@ -31875,6 +31875,9 @@ const github = __importStar(__nccwpck_require__(3228));
 const request_error_1 = __nccwpck_require__(3708);
 const plugin_retry_1 = __nccwpck_require__(3450);
 const plugin_throttling_1 = __nccwpck_require__(4759);
+const defaultHeaders = {
+    'X-GitHub-Api-Version': '2022-11-28',
+};
 const log = {
     debug: (...args) => core.debug(node_util_1.default.format(...args)),
     info: (...args) => core.info(node_util_1.default.format(...args)),
@@ -31934,12 +31937,16 @@ const throttle = {
     onRateLimit: rateLimit.bind(globalThis, 'Request quota exhausted'),
     onSecondaryRateLimit: rateLimit.bind(globalThis, 'SecondaryRateLimit detected'),
 };
+function withDefaultHeaders(octokit) {
+    const request = octokit.request.defaults({ headers: defaultHeaders });
+    return { request };
+}
 function getOctokit(token, options, ...additionalPlugins) {
     return github.getOctokit(token, {
         log,
         throttle,
         ...options,
-    }, requestLog, plugin_retry_1.retry, plugin_throttling_1.throttling, ...additionalPlugins);
+    }, withDefaultHeaders, requestLog, plugin_retry_1.retry, plugin_throttling_1.throttling, ...additionalPlugins);
 }
 //# sourceMappingURL=main.js.map
 
