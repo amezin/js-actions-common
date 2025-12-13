@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   eslint-config:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     environment:
       name: npm
       url: https://www.npmjs.com/package/@amezin/eslint-config-js-actions
@@ -31,7 +31,7 @@ jobs:
         working-directory: packages/eslint-config
 
   octokit:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     environment:
       name: npm
       url: https://www.npmjs.com/package/@amezin/js-actions-octokit
