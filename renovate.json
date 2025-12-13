@@ -6,11 +6,6 @@
   ],
   "packageRules": [
     {
-      "extends": ["packages:eslint"],
-      "matchDatasources": "npm",
-      "automerge": true
-    },
-    {
       "matchFileNames": ["packages/octokit/**"],
       "rangeStrategy": "bump"
     },
