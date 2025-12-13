@@ -15,8 +15,6 @@ Those without `shared-` prefix in the name, except `publish-eslint-config.yml`:
 
 - `.editorconfig`
 - `.gitignore`
-- `.node-version`
-- `.nvmrc`
 - `.prettierignore`
 - `.prettierrc.yml`
 - `eslint.config.mjs`

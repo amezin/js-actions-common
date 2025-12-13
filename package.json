@@ -11,6 +11,9 @@
     "url": "git+https://github.com/amezin/js-actions-common.git"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
   "scripts": {
     "build": "ncc build --source-map --license dependencies.txt src/main.ts",
     "format": "prettier --write .",
