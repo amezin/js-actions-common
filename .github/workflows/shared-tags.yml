@@ -19,10 +19,10 @@ jobs:
           echo "minor=$(echo "$GITHUB_REF_NAME" | grep -oE '^v[0-9]+\.[0-9]+')" >>"$GITHUB_OUTPUT"
           echo "major=$(echo "$GITHUB_REF_NAME" | grep -oE '^v[0-9]+')" >>"$GITHUB_OUTPUT"
 
-      - uses: amezin/create-or-update-git-ref-action@40ccb8122546cdc2fe6563ed0ffb0ab40485ca68 # v1.0.1
+      - uses: amezin/create-or-update-git-ref-action@9c82c89a00ab473475437f4b496db14be1768dc2 # v2.0.0
         with:
           ref: refs/tags/${{ steps.parse.outputs.major }}
 
-      - uses: amezin/create-or-update-git-ref-action@40ccb8122546cdc2fe6563ed0ffb0ab40485ca68 # v1.0.1
+      - uses: amezin/create-or-update-git-ref-action@9c82c89a00ab473475437f4b496db14be1768dc2 # v2.0.0
         with:
           ref: refs/tags/${{ steps.parse.outputs.minor }}
