@@ -47,8 +47,5 @@ jobs:
       - run: npm --no-git-tag-version version from-git
         working-directory: packages/octokit
 
-      - run: npm install
-        working-directory: packages/octokit
-
       - run: npm publish --provenance --access public
         working-directory: packages/octokit
