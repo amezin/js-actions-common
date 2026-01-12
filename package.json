@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@amezin/js-actions-octokit": "",
-    "@actions/core": "2.0.1"
+    "@actions/core": "2.0.2"
   },
   "devDependencies": {
     "@amezin/eslint-config-js-actions": "",
