@@ -1,8 +1,11 @@
 name: npm-publish
 
 on:
-  - workflow_call
-  - workflow_dispatch
+  push:
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
+
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -23,6 +26,8 @@ jobs:
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
 
+      - run: test "$GITHUB_REF_NAME" = "v$(jq -r .version packages/eslint-config/package.json)"
+
       - run: npm publish --provenance --access public
         working-directory: packages/eslint-config
 
@@ -39,6 +44,8 @@ jobs:
         with:
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
+
+      - run: test "$GITHUB_REF_NAME" = "v$(jq -r .version packages/octokit/package.json)"
 
       - run: npm publish --provenance --access public
         working-directory: packages/octokit
