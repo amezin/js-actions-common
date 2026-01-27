@@ -1,2 +1,4 @@
 /dist/
+
+# line below is not necessary in action repositories
 /packages/

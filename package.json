@@ -36,5 +36,6 @@
     "packages/eslint-config",
     "packages/octokit",
     "."
-  ]
+  ],
+  "version": "3.0.0"
 }

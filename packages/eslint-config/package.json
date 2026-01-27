@@ -35,5 +35,6 @@
     "build": "",
     "format": "prettier --write .",
     "lint": "eslint"
-  }
+  },
+  "version": "3.0.0"
 }

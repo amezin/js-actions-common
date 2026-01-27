@@ -1,9 +1,8 @@
 name: npm-publish
 
 on:
-  push:
-    tags:
-      - v[0-9]+.[0-9]+.[0-9]+
+  - workflow_call
+  - workflow_dispatch
 
 permissions:
   contents: read
@@ -24,9 +23,6 @@ jobs:
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
 
-      - run: npm --no-git-tag-version version from-git
-        working-directory: packages/eslint-config
-
       - run: npm publish --provenance --access public
         working-directory: packages/eslint-config
 
@@ -43,9 +39,6 @@ jobs:
         with:
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
-
-      - run: npm --no-git-tag-version version from-git
-        working-directory: packages/octokit
 
       - run: npm publish --provenance --access public
         working-directory: packages/octokit

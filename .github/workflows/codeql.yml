@@ -7,7 +7,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '38 22 * * *'
+    - cron: '38 22 * * *' # replace with some other daily schedule
 
 jobs:
   shared:

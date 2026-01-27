@@ -32,5 +32,6 @@
   "types": "lib/main.d.ts",
   "files": [
     "lib"
-  ]
+  ],
+  "version": "3.0.0"
 }

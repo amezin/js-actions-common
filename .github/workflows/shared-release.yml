@@ -1,0 +1,104 @@
+name: shared-release
+
+on:
+  workflow_call:
+    inputs:
+      dry-run:
+        type: boolean
+        required: false
+        default: ${{ github.ref_name != github.event.repository.default_branch }}
+        description: Do not create a release
+
+      draft:
+        type: boolean
+        required: false
+        default: false
+        description: Create a draft release
+
+    outputs:
+      version:
+        description: Detected version from package.json
+        value: ${{ jobs.need-release.outputs.version }}
+
+      tag:
+        description: Expected release tag name
+        value: ${{ jobs.need-release.outputs.tag }}
+
+      released:
+        description: Whether release was created
+        value: ${{ jobs.release.outputs.created || 'false' }}
+
+defaults:
+  run:
+    shell: bash
+
+permissions:
+  contents: write
+
+env:
+  GH_TOKEN: ${{ github.token }}
+  GH_REPO: ${{ github.repository }}
+
+jobs:
+  need-release:
+    runs-on: ubuntu-slim
+
+    permissions:
+      contents: read
+
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.tag.outputs.tag }}
+      latest: ${{ steps.latest.outputs.latest }}
+      need-release: >-
+        ${{
+          !contains(fromJSON(steps.existing-tags.outputs.refs), format('refs/tags/{0}', steps.tag.outputs.tag)) &&
+          steps.latest.outputs.latest != steps.tag.outputs.tag
+        }}
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - id: version
+        run: |
+          VERSION="$(jq -r .version package.json)"
+          echo "version=$VERSION" | tee "$GITHUB_OUTPUT"
+
+      - id: tag
+        run: |
+          TAG="v${VERSION}"
+          echo "tag=$TAG" | tee "$GITHUB_OUTPUT"
+
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+
+      - id: existing-tags
+        run: |
+          EXISTING="$(gh api "/repos/{owner}/{repo}/git/matching-refs/tags/$PREFIX" | jq -c '[.[].ref]')"
+          echo "refs=$EXISTING" | tee "$GITHUB_OUTPUT"
+
+        env:
+          PREFIX: ${{ steps.tag.outputs.tag }}
+
+      - id: latest
+        run: |
+          LATEST="$(gh release list --limit 1 --json tagName -q '.[].tagName')"
+          echo "latest=$LATEST" | tee "$GITHUB_OUTPUT"
+
+  release:
+    runs-on: ubuntu-slim
+    needs: need-release
+    if: ${{ !inputs.dry-run && fromJSON(needs.need-release.outputs.need-release) }}
+
+    permissions:
+      contents: write
+
+    outputs:
+      created: ${{ steps.create.outcome == 'success' }}
+
+    steps:
+      - id: create
+        run: gh release create "$TAG" --target "$GITHUB_SHA" --generate-notes --fail-on-no-commits --notes-start-tag "$LATEST" ${{ inputs.draft && '--draft' || '' }}
+        env:
+          TAG: ${{ needs.need-release.outputs.tag }}
+          LATEST: ${{ needs.need-release.outputs.latest }}

@@ -7,7 +7,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '38 22 * * *'
+    - cron: '38 22 * * *' # replace with some other daily schedule
 
 jobs:
   shared:
@@ -15,6 +15,21 @@ jobs:
     permissions:
       contents: read
 
+  release:
+    uses: ./.github/workflows/shared-release.yml
+
+    needs:
+      - shared
+      - octokit-smoke-test
+      - version-sync
+
+    permissions:
+      contents: write
+
+    with:
+      draft: true
+
+  # replace jobs below with action's test job(s)
   octokit-smoke-test:
     runs-on: ubuntu-slim
     permissions:
@@ -23,3 +38,22 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: ./.
+
+  version-sync:
+    runs-on: ubuntu-slim
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - run: test "$(jq -r .version package.json)" = "$(jq -r .version packages/octokit/package.json)"
+      - run: test "$(jq -r .version package.json)" = "$(jq -r .version packages/eslint-config/package.json)"
+
+  npm-publish:
+    uses: ./.github/workflows/npm-publish.yml
+    needs: release
+    if: ${{ fromJSON(needs.release.outputs.released) }}
+
+    permissions:
+      contents: read
+      id-token: write
