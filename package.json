@@ -22,7 +22,7 @@
   "dependencies": {
     "@amezin/js-actions-octokit": "",
     "@actions/core": "2.0.2",
-    "undici": "^6.23.0"
+    "undici": "6.23.0"
   },
   "devDependencies": {
     "@amezin/eslint-config-js-actions": "",
