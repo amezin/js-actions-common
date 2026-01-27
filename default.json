@@ -19,7 +19,7 @@
       "enabled": false
     },
     {
-      "matchPackageNames": ["@types/node", "@octokit/*"],
+      "matchPackageNames": ["@types/node", "@octokit/*", "undici"],
       "matchDatasources": ["npm"],
       "matchUpdateTypes": ["major"],
       "enabled": false
