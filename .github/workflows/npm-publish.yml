@@ -26,7 +26,8 @@ jobs:
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
 
-      - run: test "$GITHUB_REF_NAME" = "v$(jq -r .version packages/eslint-config/package.json)"
+      - run: test "$GITHUB_REF_NAME" = "v$(jq -r .version package.json)"
+        working-directory: packages/eslint-config
 
       - run: npm publish --provenance --access public
         working-directory: packages/eslint-config
@@ -45,7 +46,10 @@ jobs:
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
 
-      - run: test "$GITHUB_REF_NAME" = "v$(jq -r .version packages/octokit/package.json)"
+      - run: npm ci --workspace packages/octokit
+
+      - run: test "$GITHUB_REF_NAME" = "v$(jq -r .version package.json)"
+        working-directory: packages/octokit
 
       - run: npm publish --provenance --access public
         working-directory: packages/octokit
