@@ -27,13 +27,15 @@ jobs:
 - `.prettierignore` (needs to be modified, see comments in the file)
 - `.prettierrc.yml`
 - `eslint.config.mjs` (needs to be modified, see comments in the file)
-- `tsconfig.json`
 - `.npmrc` (needs to be modified, see comments in the file)
 - `action.yml` (needs to be modified, obviously)
 - `package.json` (needs to be modified, see comments below)
 - `renovate.json` (needs to be modified, see comments below)
+- `tsconfig.json` (needs to be modified, see comments below)
 
 In `package.json`, `name` and URLs obviously need to be replaced with the
 action name and repository URLs. `workspace` must be removed.
 
 In `renovate.json`, everything except `extends` is not necessary for actions.
+
+In `tsconfig.json`, `"include"` won't be necessary in actions repositories.
