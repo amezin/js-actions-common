@@ -1,27 +1,38 @@
 import util from 'node:util';
 import * as core from '@actions/core';
 import * as github from '@actions/github';
-import type { Octokit } from '@octokit/core';
-import type {
-    OctokitOptions,
-    OctokitPlugin,
-} from '@octokit/core/dist-types/types';
+import type { Octokit, OctokitOptions } from '@octokit/core';
+import type { OctokitPlugin } from '@octokit/core/dist-types/types';
 import { RequestError } from '@octokit/request-error';
 import type { EndpointDefaults, OctokitResponse } from '@octokit/types';
 import { retry } from '@octokit/plugin-retry';
 import { throttling, type ThrottlingOptions } from '@octokit/plugin-throttling';
+import type { Api } from '@octokit/plugin-rest-endpoint-methods';
+import type { PaginateInterface } from '@octokit/plugin-paginate-rest';
 
-type GitHub = ReturnType<typeof github.getOctokit>;
+type PaginateApi = {
+    paginate: PaginateInterface;
+};
+
+export type GitHub = Octokit & Api & PaginateApi;
 
 const defaultHeaders = {
     'X-GitHub-Api-Version': '2022-11-28',
 };
 
 const log: OctokitOptions['log'] = {
-    debug: (...args) => core.debug(util.format(...args)),
-    info: (...args) => core.info(util.format(...args)),
-    warn: (...args) => core.warning(util.format(...args)),
-    error: (...args) => core.error(util.format(...args)),
+    debug: (...args) => {
+        core.debug(util.format(...args));
+    },
+    info: (...args) => {
+        core.info(util.format(...args));
+    },
+    warn: (...args) => {
+        core.warning(util.format(...args));
+    },
+    error: (...args) => {
+        core.error(util.format(...args));
+    },
 };
 
 function requestDescription(octokit: Octokit, options: EndpointDefaults) {
@@ -65,7 +76,7 @@ function requestLog(octokit: Octokit) {
 
                 return response;
             })
-            .catch(error => {
+            .catch((error: unknown) => {
                 if (error instanceof RequestError) {
                     const { response } = error;
 

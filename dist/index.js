@@ -32996,10 +32996,18 @@ const defaultHeaders = {
     'X-GitHub-Api-Version': '2022-11-28',
 };
 const log = {
-    debug: (...args) => core.debug(node_util_1.default.format(...args)),
-    info: (...args) => core.info(node_util_1.default.format(...args)),
-    warn: (...args) => core.warning(node_util_1.default.format(...args)),
-    error: (...args) => core.error(node_util_1.default.format(...args)),
+    debug: (...args) => {
+        core.debug(node_util_1.default.format(...args));
+    },
+    info: (...args) => {
+        core.info(node_util_1.default.format(...args));
+    },
+    warn: (...args) => {
+        core.warning(node_util_1.default.format(...args));
+    },
+    error: (...args) => {
+        core.error(node_util_1.default.format(...args));
+    },
 };
 function requestDescription(octokit, options) {
     const requestOptions = octokit.request.endpoint.parse(options);
@@ -33025,7 +33033,7 @@ function requestLog(octokit) {
             core.endGroup();
             return response;
         })
-            .catch(error => {
+            .catch((error) => {
             if (error instanceof request_error_1.RequestError) {
                 const { response } = error;
                 core.error(responseDescription(octokit, options, response, start));
@@ -33114,9 +33122,19 @@ const github = __importStar(__nccwpck_require__(3228));
 const js_actions_octokit_1 = __nccwpck_require__(3329);
 async function main() {
     const octokit = (0, js_actions_octokit_1.getOctokit)(core.getInput('github-token', { required: true }));
-    await octokit.rest.repos.get({
+    const { data: repo } = await octokit.rest.repos.get({
         ...github.context.repo,
     });
+    const branches = await octokit.paginate(octokit.rest.repos.listBranches, {
+        ...github.context.repo,
+    });
+    const filteredBranches = branches.filter(branch => branch.name === repo.default_branch);
+    if (filteredBranches.length === 0) {
+        throw new Error(`Branch ${repo.default_branch} not found`);
+    }
+    if (filteredBranches.length > 1) {
+        throw new Error(`Multiple ${repo.default_branch} branches found`);
+    }
 }
 main().catch((error) => {
     core.setFailed(String(error));

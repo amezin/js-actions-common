@@ -8,9 +8,25 @@ async function main() {
         core.getInput('github-token', { required: true })
     );
 
-    await octokit.rest.repos.get({
+    const { data: repo } = await octokit.rest.repos.get({
         ...github.context.repo,
     });
+
+    const branches = await octokit.paginate(octokit.rest.repos.listBranches, {
+        ...github.context.repo,
+    });
+
+    const filteredBranches = branches.filter(
+        branch => branch.name === repo.default_branch
+    );
+
+    if (filteredBranches.length === 0) {
+        throw new Error(`Branch ${repo.default_branch} not found`);
+    }
+
+    if (filteredBranches.length > 1) {
+        throw new Error(`Multiple ${repo.default_branch} branches found`);
+    }
 }
 
 main().catch((error: unknown) => {
