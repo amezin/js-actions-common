@@ -16,8 +16,14 @@ jobs:
     steps:
       - id: parse
         run: |
-          echo "minor=$(echo "$GITHUB_REF_NAME" | grep -oE '^v[0-9]+\.[0-9]+')" >>"$GITHUB_OUTPUT"
-          echo "major=$(echo "$GITHUB_REF_NAME" | grep -oE '^v[0-9]+')" >>"$GITHUB_OUTPUT"
+          MINOR="$(echo "$TAG" | grep -oE '^v[0-9]+\.[0-9]+')"
+          echo "minor=$MINOR" | tee -a "$GITHUB_OUTPUT"
+
+          MAJOR="$(echo "$TAG" | grep -oE '^v[0-9]+')"
+          echo "major=$MAJOR" | tee -a "$GITHUB_OUTPUT"
+
+        env:
+          TAG: ${{ github.ref_name }}
 
       - uses: amezin/create-or-update-git-ref-action@9c82c89a00ab473475437f4b496db14be1768dc2 # v2.0.0
         with:
