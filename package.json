@@ -22,17 +22,13 @@
   "dependencies": {
     "@amezin/js-actions-octokit": "",
     "@actions/core": "2.0.3",
-    "@actions/github": "8.0.1",
-    "undici": "6.23.0"
+    "@actions/github": "8.0.1"
   },
   "devDependencies": {
     "@amezin/eslint-config-js-actions": "",
     "@vercel/ncc": "0.38.4",
     "@types/node": "24.10.9",
     "typescript": "5.9.3"
-  },
-  "overrides": {
-    "undici": "$undici"
   },
   "workspaces": [
     "packages/eslint-config",
