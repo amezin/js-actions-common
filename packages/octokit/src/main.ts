@@ -44,7 +44,9 @@ function responseDescription(
 ) {
     const requestId = response?.headers['x-github-request-id'];
 
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     return `${requestDescription(octokit, options)} - ${response?.status} with id ${requestId} in ${
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         Date.now() - start
     }ms`;
 }
@@ -102,12 +104,14 @@ function rateLimit(
 ): boolean {
     if (retryCount === 0) {
         octokit.log.warn(
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
             `${what} for request ${options.method} ${options.url}. Will retry after ${retryAfter} seconds!`
         );
 
         return true;
     } else {
         octokit.log.warn(
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
             `${what} for request ${options.method} ${options.url}. Retry limit exceeded!`
         );
 

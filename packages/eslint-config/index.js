@@ -18,7 +18,7 @@ export default defineConfig([
     {
         files: ['**/*.{ts,mts,cts}'],
         plugins: { tseslint },
-        extends: ['tseslint/recommendedTypeChecked'],
+        extends: ['tseslint/strictTypeChecked'],
         languageOptions: {
             parserOptions: {
                 projectService: true,
