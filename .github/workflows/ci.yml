@@ -26,6 +26,9 @@ jobs:
     permissions:
       contents: write
 
+    with:
+      draft: true
+
   # replace jobs below with action's test job(s)
   octokit-smoke-test:
     runs-on: ubuntu-slim
