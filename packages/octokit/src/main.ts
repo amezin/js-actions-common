@@ -1,20 +1,14 @@
 import util from 'node:util';
 import * as core from '@actions/core';
 import * as github from '@actions/github';
-import type { Octokit, OctokitOptions } from '@octokit/core';
-import type { OctokitPlugin } from '@octokit/core/dist-types/types';
+import type { Octokit } from '@octokit/core';
+import type { OctokitOptions, OctokitPlugin } from '@octokit/core/types';
 import { RequestError } from '@octokit/request-error';
 import type { EndpointDefaults, OctokitResponse } from '@octokit/types';
 import { retry } from '@octokit/plugin-retry';
 import { throttling, type ThrottlingOptions } from '@octokit/plugin-throttling';
-import type { Api } from '@octokit/plugin-rest-endpoint-methods';
-import type { PaginateInterface } from '@octokit/plugin-paginate-rest';
 
-type PaginateApi = {
-    paginate: PaginateInterface;
-};
-
-export type GitHub = Octokit & Api & PaginateApi;
+export type GitHub = ReturnType<typeof github.getOctokit>;
 
 const defaultHeaders = {
     'X-GitHub-Api-Version': '2022-11-28',
