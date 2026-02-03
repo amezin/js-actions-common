@@ -49,6 +49,6 @@
       "automerge": true
     }
   ],
-  "postUpdateOptions": ["npmDedupe"],
+  "postUpdateOptions": ["npmDedupe", "npmInstallTwice"],
   "platformAutomerge": false
 }
