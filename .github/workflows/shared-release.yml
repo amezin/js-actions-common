@@ -115,11 +115,11 @@ jobs:
           TAG: ${{ needs.need-release.outputs.tag }}
 
       - if: ${{ !inputs.draft }}
-        uses: amezin/create-or-update-git-ref-action@56a1c2e2ba60d79a65210a2b2d9279599f9f35d2 # v2.0.1
+        uses: amezin/create-or-update-git-ref-action@d509d2bff49d361898979a54324068c9d17e0df5 # v2.0.2
         with:
           ref: refs/tags/${{ steps.parse.outputs.major }}
 
       - if: ${{ !inputs.draft }}
-        uses: amezin/create-or-update-git-ref-action@56a1c2e2ba60d79a65210a2b2d9279599f9f35d2 # v2.0.1
+        uses: amezin/create-or-update-git-ref-action@d509d2bff49d361898979a54324068c9d17e0df5 # v2.0.2
         with:
           ref: refs/tags/${{ steps.parse.outputs.minor }}
