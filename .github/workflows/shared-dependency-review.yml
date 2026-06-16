@@ -15,7 +15,7 @@ jobs:
   dependency-review:
     runs-on: ubuntu-slim
     steps:
-      - uses: actions/dependency-review-action@3c4e3dcb1aa7874d2c16be7d79418e9b7efd6261 # v4.8.2
+      - uses: actions/dependency-review-action@2031cfc080254a8a887f58cffee85186f0e49e48 # v4.9.0
         with:
           comment-summary-in-pr: always
           allow-licenses: MIT, Apache-2.0, ISC, BSD-2-Clause, BSD-3-Clause, BlueOak-1.0.0
