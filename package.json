@@ -29,7 +29,7 @@
     "@amezin/eslint-config-js-actions": "",
     "@vercel/ncc": "0.44.0",
     "@types/node": "24.13.2",
-    "typescript": "5.9.3"
+    "typescript": "6.0.3"
   },
   "workspaces": [
     "packages/eslint-config",
