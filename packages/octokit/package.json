@@ -26,7 +26,6 @@
     "typescript": "6.0.3"
   },
   "scripts": {
-    "prepare": "npm run build",
     "build": "tsc",
     "format": "prettier --write .",
     "lint": "eslint"
