@@ -35,7 +35,8 @@
   "types": "lib/main.d.ts",
   "type": "module",
   "files": [
-    "lib"
+    "lib",
+    "tsconfig.base.json"
   ],
   "version": "5.0.0"
 }
