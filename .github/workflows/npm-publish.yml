@@ -53,6 +53,7 @@ jobs:
           package-manager-cache: false
 
       - run: npm ci --workspace packages/octokit
+      - run: npm run build --workspace packages/octokit
 
       - run: test "$GITHUB_REF_NAME" = "v$(jq -r .version package.json)"
         working-directory: packages/octokit
