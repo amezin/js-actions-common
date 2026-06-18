@@ -11,7 +11,7 @@ import { throttling, type ThrottlingOptions } from '@octokit/plugin-throttling';
 export type GitHub = ReturnType<typeof github.getOctokit>;
 
 const defaultHeaders = {
-    'X-GitHub-Api-Version': '2022-11-28',
+    'X-GitHub-Api-Version': '2026-03-10',
 };
 
 const log: OctokitOptions['log'] = {
