@@ -1,13 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": "Common Renovate configuration for JavaScript/TypeScript GitHub Actions",
-  "extends": [
-    "config:best-practices",
-    "config:js-app",
-    "npm:unpublishSafe",
-    ":rebaseStalePrs",
-    ":maintainLockFilesWeekly"
-  ],
+  "extends": ["config:best-practices", "config:js-app", ":rebaseStalePrs"],
   "packageRules": [
     {
       "extends": ["helpers:pinGitHubActionDigests"],
