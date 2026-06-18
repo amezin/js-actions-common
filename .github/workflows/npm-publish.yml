@@ -27,6 +27,7 @@ jobs:
         with:
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
+          package-manager-cache: false
 
       - run: test "$GITHUB_REF_NAME" = "v$(jq -r .version package.json)"
         working-directory: packages/eslint-config
@@ -49,6 +50,7 @@ jobs:
         with:
           node-version-file: package.json
           registry-url: https://registry.npmjs.org
+          package-manager-cache: false
 
       - run: npm ci --workspace packages/octokit
 
